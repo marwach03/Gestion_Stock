@@ -1,0 +1,43 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o Gestion_produit.o Gestion_commande.o Gestion_stock.o Gestion_livraison.o Statistiques.o
+LINKOBJ  = main.o Gestion_produit.o Gestion_commande.o Gestion_stock.o Gestion_livraison.o Statistiques.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -L"C:/Program Files/mysql-8.0.33-winx64/lib" -lmysql
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files/mysql-8.0.33-winx64/include" -I"C:/Program Files/mysql-8.0.33-winx64/include/mysql"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Program Files/mysql-8.0.33-winx64/include" -I"C:/Program Files/mysql-8.0.33-winx64/include/mysql"
+BIN      = Project1.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Gestion_produit.o: Gestion_produit.cpp
+	$(CPP) -c Gestion_produit.cpp -o Gestion_produit.o $(CXXFLAGS)
+
+Gestion_commande.o: Gestion_commande.cpp
+	$(CPP) -c Gestion_commande.cpp -o Gestion_commande.o $(CXXFLAGS)
+
+Gestion_stock.o: Gestion_stock.cpp
+	$(CPP) -c Gestion_stock.cpp -o Gestion_stock.o $(CXXFLAGS)
+
+Gestion_livraison.o: Gestion_livraison.cpp
+	$(CPP) -c Gestion_livraison.cpp -o Gestion_livraison.o $(CXXFLAGS)
+
+Statistiques.o: Statistiques.cpp
+	$(CPP) -c Statistiques.cpp -o Statistiques.o $(CXXFLAGS)
